@@ -59,11 +59,16 @@
 	 * Get API URL from data-api in script tag with the correct protocol.
 	 * If the data-api attribute is not set, then we use the current script's
 	 * src attribute to determine the host.
+	 * If data-api starts with a slash (/), it is used as a relative URL,
+	 * to use madema hosted on a different base path/subfolder of the same
+	 * domain
 	 */
-	const host = currentScript.getAttribute('data-api')
-		? `${location.protocol}//${currentScript.getAttribute('data-api')}/`
-		: // @ts-ignore - We know this won't be an SVGScriptElement.
-			currentScript.src.replace(/[^\/]+$/, 'api/');
+	const host = currentScript.getAttribute("data-api").startsWith("/")
+		? `${currentScript.getAttribute('data-api')}/`
+		: currentScript.getAttribute('data-api')
+			? `${location.protocol}//${currentScript.getAttribute('data-api')}/`
+			: // @ts-ignore - We know this won't be an SVGScriptElement.
+				currentScript.src.replace(/[^\/]+$/, 'api/');
 
 	/**
 	 * Generate a unique ID for linking multiple beacon events together for the same page
