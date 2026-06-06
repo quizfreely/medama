@@ -11,6 +11,13 @@
   <a href="https://medama.io/discord">Discord</a>
 </p>
 
+> [!NOTE]
+> This is a fork of [medama-io/medama](https://github.com/medama-io/medama)
+> 
+> Changes:
+> - Adds `window.madema.uid` to access the generated unique beacon ID for programatic use
+> - Allows relative URLs for `data-api` attribute (starting with a slash `/`, with no trailing slash), to use an instance hosted on a different base path/subfolder of the same domain
+
 ## Overview
 
 Medama Analytics is an open-source project dedicated to providing self-hostable, cookie-free website analytics. With a lightweight tracker of less than 1KB, it aims to offer useful analytics while prioritising user privacy.
