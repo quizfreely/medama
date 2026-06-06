@@ -60,7 +60,7 @@
 	 * If the data-api attribute is not set, then we use the current script's
 	 * src attribute to determine the host.
 	 * If data-api starts with a slash (/), it is used as a relative URL,
-	 * to use madema hosted on a different base path/subfolder of the same
+	 * to use medama hosted on a different base path/subfolder of the same
 	 * domain
 	 */
 	const host = currentScript.getAttribute("data-api").startsWith("/")
