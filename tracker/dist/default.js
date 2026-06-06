@@ -41,6 +41,13 @@
 		return;
 	}
 
+	if (window == null) {
+		return;
+	}
+	if (window.medama == null) {
+		window.medama = {};
+	}
+
 	/**
 	 * document.currentScript can only be called when the script is being executed. If
 	 * we call the script in an event listener, then it will be null. So we need to
@@ -72,7 +79,7 @@
 	/**
 	 * Unique ID linking multiple beacon events together for the same page view.
 	 */
-	let uid = generateUid();
+	window.medama.uid = generateUid();
 
 	/**
 	 * Whether the user is unique or not.
@@ -192,7 +199,7 @@
 					 * Payload to send to the server.
 					 * @type {HitPayload}
 					 */ ({
-						"b": uid,
+						"b": window.medama.uid,
 						"e": "load",
 						"u": location.href,
 						"r": document.referrer,
@@ -235,7 +242,7 @@
 					 * @type {DurationPayload}
 					 */
 					({
-						"b": uid,
+						"b": window.medama.uid,
 						"e": "unload",
 						"m": Date.now() - startTime,
 					}),
